@@ -39,4 +39,3 @@ default['nginx']['source']['modules'] = [
   "http_ssl_module",
   "http_gzip_static_module"
 ]
-default['nginx']['source']['extra_modules'] = []

@@ -1,0 +1,17 @@
+server {
+    server_name <%= node["application"]["webserver"]["server_name"] %>;
+    root <%= node["application"]["webserver"]["webroot"] %>;
+ 
+    location / {
+        index index.html index.htm index.php;
+    }
+ 
+    location ~ /(index|ajax)\.php$ {
+            fastcgi_split_path_info ^(.+\.php)(/.+)$;
+            fastcgi_pass unix:<%= node["php-fpm"]["pool"]["www"]["listen"] %>;
+            fastcgi_index index.php;
+            fastcgi_read_timeout 30;
+            include fastcgi_params;
+            fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+    }
+}
