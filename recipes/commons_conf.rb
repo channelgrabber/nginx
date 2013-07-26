@@ -35,6 +35,23 @@ template "#{node['nginx']['dir']}/sites-available/default" do
   notifies :reload, 'service[nginx]'
 end
 
+
+node['nginx']['sites'].each do |site|
+  template "#{node['nginx']['dir']}/sites-available/#{site}" do
+	  source "site.conf.erb"
+	  owner "root"
+	  group "root"
+	  mode 00644
+	  notifies :reload, 'service[nginx]'
+	end
+end
+
 nginx_site 'default' do
   enable node['nginx']['default_site_enabled']
+end
+
+node['nginx']['sites'].each do |site|
+  nginx_site "#{site}" do
+    enable site['enabled']
+  end
 end
