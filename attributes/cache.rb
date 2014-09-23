@@ -1,4 +1,4 @@
-default['nginx']['cache']['enabled'] = false
+default['nginx']['cache']['enabled'] = true
 default['nginx']['cache']['path'] = "/tmp/nginx/cache"
 default['nginx']['cache']['keys_zone_name'] = "NGINX_CACHE"
 default['nginx']['cache']['keys_zone_size'] = "100"
