@@ -74,6 +74,10 @@ http {
   limit_req_zone $binary_remote_addr zone=<%= node['nginx']['rate_limiting_zone_name'] %>:<%= node['nginx']['rate_limiting_backoff'] %> rate=<%= node['nginx']['rate_limit'] %>;
 
   <% end -%>
+
+  fastcgi_cache_path /tmp/nginx/cache levels=1:2 keys_zone=NGINX_CACHE:100m inactive=60m;
+  fastcgi_cache_key "$scheme$request_method$host$request_uri";
+
   include <%= node['nginx']['dir'] %>/conf.d/*.conf;
   include <%= node['nginx']['dir'] %>/sites-enabled/*;
 }
