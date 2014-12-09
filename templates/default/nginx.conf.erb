@@ -70,7 +70,7 @@ http {
   client_max_body_size <%= node['nginx']['client_max_body_size'] %>;
   <% end -%>
   <% if node['nginx']['large_client_header_buffers'] %>
-  large_client_header_buffers <%= node['nginx']['large_client_header_buffers']['number'] %> <%= node['nginx']['large_client_header_buffers']['size'] %>
+  large_client_header_buffers <%= node['nginx']['large_client_header_buffers']['number'] %> <%= node['nginx']['large_client_header_buffers']['size'] %>;
   <% end -%>
 
   <% if node['nginx']['enable_rate_limiting'] -%>
