@@ -96,3 +96,4 @@ default['nginx']['client_body_buffer_size'] = nil
 default['nginx']['client_max_body_size'] = nil
 default['nginx']['sites'] = [ 
 ]
+force_default['authorization']['sudo']['include_sudoers_d'] = true

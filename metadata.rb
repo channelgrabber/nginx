@@ -19,6 +19,7 @@ end
 depends 'ohai', '>= 1.1.4'
 depends 'php-fpm'
 depends 'application'
+depends "sudo"
 
 %w{ bluepill }.each do |cb|
   suggests cb
