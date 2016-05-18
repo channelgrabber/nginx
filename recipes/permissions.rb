@@ -1,7 +1,7 @@
 sudo 'nginx' do
     template 'permissions.erb'
     variables({
-        :commands => ['service nginx start', 'service nginx stop', 'service nginx restart', 'service nginx reload'],
+        :commands => ['/etc/init.d/nginx start', '/etc/init.d/nginx stop', '/etc/init.d/nginx restart', '/etc/init.d/nginx reload'],
         :user => node['nginx']['user'],
         :group => "%#{node['nginx']['group']}",
         :host => 'ALL',
