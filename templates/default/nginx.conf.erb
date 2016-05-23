@@ -21,6 +21,8 @@ events {
 }
 
 http {
+  ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+
   <% if node.recipe?('nginx::naxsi_module') %>
   include       <%= node['nginx']['dir'] %>/naxsi_core.rules;
   <% end %>
