@@ -45,7 +45,10 @@ when 'package'
     keyserver "keyserver.ubuntu.com"
     key "C300EE8C"
   end
-  package node['nginx']['package_name']
+  package node['nginx']['package_name'] do
+    action :install
+    version node['nginx']['version']
+  end
   service 'nginx' do
     supports :status => true, :restart => true, :reload => true
     action :enable
