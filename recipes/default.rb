@@ -38,6 +38,13 @@ when 'package'
       raise ArgumentError, "Unknown value '#{node['nginx']['repo_source']}' was passed to the nginx cookbook."
     end
   end
+  apt_repository "nginx" do
+    uri "http://ppa.launchpad.net/nginx/stable/ubuntu"
+    distribution node['lsb']['codename']
+    components ["main"]
+    keyserver "keyserver.ubuntu.com"
+    key "C300EE8C"
+  end
   package node['nginx']['package_name']
   service 'nginx' do
     supports :status => true, :restart => true, :reload => true
