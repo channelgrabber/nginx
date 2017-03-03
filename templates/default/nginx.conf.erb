@@ -11,7 +11,7 @@ error_log  <%= node['nginx']['log_dir'] %>/error.log;
 pid        <%= node['nginx']['pid'] %>;
 
 <% node['nginx']['dynamic_modules'].each do |module_name| -%>
-load_module "modules/<%= @module_name %>.so";
+load_module "modules/<%= module_name %>.so";
 <% end -%>
 
 events {
