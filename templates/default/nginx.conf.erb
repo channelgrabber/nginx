@@ -20,6 +20,10 @@ events {
 <% end -%>
 }
 
+<% node['nginx']['dynamic_modules'].each do |module_name| -%>
+load_module "modules/<%= @module_name %>.so";
+<% end -%>
+
 http {
   ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
 
