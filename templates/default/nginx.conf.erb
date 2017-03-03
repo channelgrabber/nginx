@@ -10,6 +10,10 @@ worker_rlimit_nofile <%= node['nginx']['worker_rlimit_nofile'] %>;
 error_log  <%= node['nginx']['log_dir'] %>/error.log;
 pid        <%= node['nginx']['pid'] %>;
 
+<% node['nginx']['dynamic_modules'].each do |module_name| -%>
+load_module "modules/<%= @module_name %>.so";
+<% end -%>
+
 events {
   worker_connections  <%= node['nginx']['worker_connections'] %>;
 <% if node['nginx']['multi_accept'] -%>
@@ -19,10 +23,6 @@ events {
   use <%= node['nginx']['event'] %>;
 <% end -%>
 }
-
-<% node['nginx']['dynamic_modules'].each do |module_name| -%>
-load_module "modules/<%= @module_name %>.so";
-<% end -%>
 
 http {
   ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
