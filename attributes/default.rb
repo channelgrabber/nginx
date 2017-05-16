@@ -31,7 +31,8 @@ default['nginx']['log_dir'] = "/var/log/nginx"
 default['nginx']['binary'] = "/usr/sbin/nginx"
 default['nginx']['repository'] = {
   "uri" => "http://nginx.org/packages/ubuntu",
-  "key" => "ABF5BD827BD9BF62"
+  "key" => "ABF5BD827BD9BF62",
+  "components" => ["nginx"]
 }
 
 case node['platform']

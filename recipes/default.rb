@@ -41,7 +41,7 @@ when 'package'
   apt_repository "nginx" do
     uri node['nginx']['repository']['uri']
     distribution node['lsb']['codename']
-    components ["main"]
+    components node['nginx']['repository']['components']
     keyserver "keyserver.ubuntu.com"
     key node['nginx']['repository']['key']
   end
