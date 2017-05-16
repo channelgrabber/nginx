@@ -29,6 +29,7 @@ default['nginx']['package_name'] = "nginx"
 default['nginx']['dir'] = "/etc/nginx"
 default['nginx']['log_dir'] = "/var/log/nginx"
 default['nginx']['binary'] = "/usr/sbin/nginx"
+default['nginx']['repository_uri'] = "http://nginx.org/packages/ubuntu"
 
 case node['platform']
 when "debian","ubuntu"
