@@ -39,9 +39,11 @@ when 'package'
     end
   end
   apt_repository "nginx" do
-    uri node['nginx']['repository_uri']
+    uri node['nginx']['repository']['uri']
     distribution node['lsb']['codename']
     components ["main"]
+    keyserver "keyserver.ubuntu.com"
+    key node['nginx']['repository']['key']
   end
   package node['nginx']['package_name'] do
     action :install
