@@ -51,6 +51,7 @@ when 'package'
   package node['nginx']['package_name'] do
     action :install
     version node['nginx']['version']
+    options '--force-yes'
   end
   service 'nginx' do
     supports :status => true, :restart => true, :reload => true
