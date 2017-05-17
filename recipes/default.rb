@@ -45,6 +45,9 @@ when 'package'
     keyserver "keyserver.ubuntu.com"
     key node['nginx']['repository']['key']
   end
+  package 'nginx-common' do
+    action :remove
+  end
   package node['nginx']['package_name'] do
     action :install
     version node['nginx']['version']
