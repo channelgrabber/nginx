@@ -26,6 +26,7 @@
 # default['nginx']['source']['checksum']
 default['nginx']['version'] = "1.10.*"
 default['nginx']['package_name'] = "nginx"
+default['nginx']['require_common'] = false
 default['nginx']['dir'] = "/etc/nginx"
 default['nginx']['log_dir'] = "/var/log/nginx"
 default['nginx']['binary'] = "/usr/sbin/nginx"

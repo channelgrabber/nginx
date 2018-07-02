@@ -46,7 +46,7 @@ when 'package'
     key node['nginx']['repository']['key']
   end
   package 'nginx-common' do
-    action :remove
+    action node['nginx']['require_common'] ? :nothing : :remove
   end
   package node['nginx']['package_name'] do
     action :install
