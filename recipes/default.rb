@@ -45,6 +45,9 @@ when 'package'
     keyserver "keyserver.ubuntu.com"
     key node['nginx']['repository']['key']
   end
+  package 'nginx' do
+    action :nothing
+  end
   package 'nginx-common' do
     action node['nginx']['require_common'] ? :nothing : :remove
   end
@@ -52,6 +55,7 @@ when 'package'
     action :install
     version node['nginx']['version']
     options '--force-yes'
+    notifies :purge, 'package[nginx]', :before
   end
   service 'nginx' do
     supports :status => true, :restart => true, :reload => true
