@@ -33,6 +33,15 @@ directory node['nginx']['log_dir'] do
   recursive true
 end
 
+%w(error.log access.log).each do |log_file|
+  file File.join(node['nginx']['log_dir'], log_file) do
+    mode 00755
+    owner node['nginx']['user']
+    group node['nginx']['group']
+    action :create
+  end
+end
+
 directory File.dirname(node['nginx']['pid']) do
   owner "root"
   group "root"
